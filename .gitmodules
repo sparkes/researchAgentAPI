@@ -1,0 +1,3 @@
+[submodule "researchAgent"]
+	path = researchAgent
+	url = https://github.com/sparkes/researchAgent
