@@ -119,11 +119,15 @@ docker run -p 5000:5000 \
 
 ### Using Pre-built Image
 
-A pre-built image is available on GitHub Container Registry:
+A pre-built image is available on GitHub Container Registry, with support for both AMD64 and ARM64 architectures:
 
 ```bash
 docker pull ghcr.io/sparkes/researchagentapi:latest
 ```
+
+Docker will automatically pull the correct image for your system's architecture. The image supports:
+- AMD64 (x86_64) - For most desktop/server systems
+- ARM64 (aarch64) - For Apple Silicon Macs, Raspberry Pi, and other ARM-based systems
 
 ### Environment Variables in Docker
 
