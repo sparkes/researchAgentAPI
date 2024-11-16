@@ -5,20 +5,16 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy only what's needed for git operations first
-COPY .git ./.git
-COPY .gitmodules .
+# Copy the entire repository including .git
+COPY . .
 
 # Initialize and update submodules
 RUN git submodule update --init --recursive
 
-# Now copy the rest of the application
-COPY requirements.txt .
+# Install dependencies
 RUN pip install -r requirements.txt
 
-COPY . .
-
-# Install the researchAgent package in development mode
-RUN pip install -e researchAgent/
+# Add researchAgent to PYTHONPATH
+ENV PYTHONPATH="/app:${PYTHONPATH}"
 
 CMD ["python", "app.py"]
