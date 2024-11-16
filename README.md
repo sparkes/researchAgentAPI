@@ -93,6 +93,7 @@ The API returns a JSON response with the following structure:
   "api_usage": { "total_api_calls": 10 },
   "metadata": { ... }
 }
+```
 
 ⚠️ **Disclaimer**
 
