@@ -8,13 +8,17 @@ WORKDIR /app
 # Copy the entire repository including .git
 COPY . .
 
-# Initialize and update submodules
-RUN git submodule update --init --recursive
+# Force update submodule to latest main branch
+RUN git submodule deinit -f researchAgent && \
+    git submodule update --init --recursive && \
+    cd researchAgent && \
+    git checkout main && \
+    git pull origin main
 
 # Install dependencies
 RUN pip install -r requirements.txt
 
-# Add researchAgent to PYTHONPATH
-ENV PYTHONPATH="/app:${PYTHONPATH}"
+# Set PYTHONPATH
+ENV PYTHONPATH=/app
 
 CMD ["python", "app.py"]
