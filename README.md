@@ -93,6 +93,51 @@ The API returns a JSON response with the following structure:
   "api_usage": { "total_api_calls": 10 },
   "metadata": { ... }
 }
+
+⚠️ **Disclaimer**
+
+This repository is a demonstration project and is **NOT** intended for production use. It serves as an example implementation of how to use the researchAgent repository's capabilities in a web API context. The code, configurations, and setup provided here are for educational and experimental purposes only.
+
+## Docker Usage
+
+The project includes Docker support for easy deployment and testing. Note that this Docker implementation is also for demonstration purposes only.
+
+### Building the Docker Image
+
+```bash
+docker build -t ghcr.io/[your-username]/researchagentapi:latest .
+```
+
+### Running the Container
+
+```bash
+docker run -p 5000:5000 \
+  -e OPENAI_API_KEY=your-api-key \
+  ghcr.io/[your-username]/researchagentapi:latest
+```
+
+### Using Pre-built Image
+
+A pre-built image is available on GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/sparkes/researchagentapi:latest
+```
+
+### Environment Variables in Docker
+
+When running the container, you can pass environment variables:
+- `OPENAI_API_KEY`: Your OpenAI API key (required)
+- `OPENAI_API_BASE`: Alternative API base URL (optional)
+- `OPENAI_MODEL_NAME`: Specific model to use (optional)
+
+Example with all options:
+```bash
+docker run -p 5000:5000 \
+  -e OPENAI_API_KEY=your-api-key \
+  -e OPENAI_API_BASE=https://api.sambanova.ai/v1 \
+  -e OPENAI_MODEL_NAME=Meta-Llama-3.1-70B-Instruct \
+  ghcr.io/sparkes/researchagentapi:latest
 ```
 
 ## Limitations
