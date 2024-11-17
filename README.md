@@ -26,8 +26,18 @@ A powerful web API service for analyzing research papers using advanced AI capab
 
 1. Clone the repository with submodules:
 ```bash
+# Clone with submodules in one command
 git clone --recursive [repository-url]
 cd researchAgentAPI
+
+# Or, if you already cloned without --recursive:
+git clone [repository-url]
+cd researchAgentAPI
+git submodule init
+git submodule update
+
+# To update submodules to their latest commits:
+git submodule update --remote
 ```
 
 2. Create and activate a virtual environment:
